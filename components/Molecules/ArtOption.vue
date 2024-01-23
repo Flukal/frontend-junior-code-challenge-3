@@ -1,5 +1,9 @@
 <template>
-  <div class="flex justify-between w-full gap-10">
+  <div>
+    <div class="mb-6">
+      <AtomsHeadline headline="Select Grid" class="mb-4 text-blue-950" />
+      <AtomsInputSelect @emitGrid="getGrid" />
+    </div>
     <div>
       <AtomsHeadline headline="Choose color palette" class="mb-4 text-blue-950" />
       <div class="flex items-center flex-wrap gap-2">
@@ -8,10 +12,6 @@
         </div>
         <AtomsColorPicker v-for="(color, index) in colors" :key="index" v-model="colors[index]" @update:modelValue="(val) => updateColor(val, index)" @click="selectColor(index)" @delete="deleteColor(index)" class="w-16 h-16 inline-block rounded-md" :class="{ 'outline outline-offset-2 outline-sky-900/50 outline-2': index === selectedColorIndex }" />
       </div>
-    </div>
-    <div class="hallo min-w-32">
-      <AtomsHeadline headline="Select Grid" class="text-nowrap mb-4 text-blue-950" />
-      <AtomsInputSelect @emitGrid="getGrid" />
     </div>
   </div>
 </template>

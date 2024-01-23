@@ -1,14 +1,17 @@
 <template>
-  <select v-model="selectedOption" class="w-full">
-    <option value="8">8</option>
-    <option value="12">12</option>
-    <option value="16">16</option>
-    <option value="32">32</option>
+  <select v-model="selectedOption" class="w-32">
+    <option v-for="option in options" :key="option.value" :value="option.value">{{ option.label }}</option>
   </select>
 </template>
 
 <script setup>
 const selectedOption = ref('8');
+const options = [
+  { value: '8', label: '8' },
+  { value: '12', label: '12' },
+  { value: '16', label: '16' },
+  { value: '32', label: '32' },
+];
 const emit = defineEmits(['emitGrid']);
 
 watch(selectedOption, (selectedVal) => {
