@@ -1,5 +1,5 @@
 <template>
-  <select v-model="selectedOption" class="w-32">
+  <select v-model="selectedOption" class="w-32 border border-blue-950 rounded-md text-blue-950 transition px-6 py-2">
     <option v-for="option in options" :key="option.value" :value="option.value">{{ option.label }}</option>
   </select>
 </template>

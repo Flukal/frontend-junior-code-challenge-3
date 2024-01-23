@@ -1,8 +1,17 @@
 <template>
   <div>
-    <div class="mb-6">
-      <AtomsHeadline headline="Select Grid" class="mb-4 text-blue-950" />
-      <AtomsInputSelect @emitGrid="getGrid" />
+    <div class="flex flex-col sm:flex-row gap-4 mb-6">
+      <div>
+        <AtomsHeadline headline="Select Grid" class="mb-4 text-blue-950" />
+        <AtomsInputSelect @emitGrid="getGrid" />
+      </div>
+      <div>
+        <AtomsHeadline headline="Color multiple boxes" class="mb-4 text-blue-950" />
+        <div class="flex items-center gap-2 py-2">
+          <input type="checkbox" id="checkActive" v-model="labelStore" @change="emitCheckboxEvent" />
+          <p>Activate to color all the neighboring pixels</p>
+        </div>
+      </div>
     </div>
     <div>
       <AtomsHeadline headline="Choose color palette" class="mb-4 text-blue-950" />
@@ -19,7 +28,8 @@
 const colors = ref([]);
 let currentColor = ref('#000000');
 let selectedColorIndex = ref(null);
-const emit = defineEmits(['emitGrid', 'emitColor']);
+const labelStore = ref(false);
+const emit = defineEmits(['emitGrid', 'emitColor', 'emitCheckbox']);
 
 watch(colors, (newColors) => {
   selectColor(newColors.length - 1);
@@ -27,6 +37,10 @@ watch(colors, (newColors) => {
 
 const getGrid = (value) => {
   emit('emitGrid', value);
+};
+
+const emitCheckboxEvent = () => {
+  emit('emitCheckbox', labelStore.value);
 };
 
 const updateColor = (event, index) => {

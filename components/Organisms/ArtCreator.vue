@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 max-w-5xl mx-auto">
     <div class="flex flex-col-reverse sm:flex-row justify-between gap-4 sm:gap-10">
-      <MoleculesArtOption @emitGrid="getGrid" @emitColor="selectColor" class="sm:w-3/4" />
+      <MoleculesArtOption @emitGrid="getGrid" @emitColor="selectColor" @emitCheckbox="getCheckbox" class="sm:w-3/4" />
       <div class="mb-8 sm:w-1/4">
         <AtomsHeadline headline="Select file format" class="text-nowrap mb-4 text-blue-950" />
         <select v-model="fileFormat" class="px-6 py-2 rounded-md text-blue-950 transition mr-4 mb-4 border border-blue-950 w-full">
@@ -23,10 +23,10 @@ const colors = ref(Array(gridSelection.value * gridSelection.value).fill('transp
 let selectedColor = ref('transparent');
 let usedColors = ref([]);
 const fileFormat = ref('pdf');
+const checkboxChecked = ref(false);
 const options = [
   { value: 'pdf', label: 'PDF' },
   { value: 'png', label: 'PNG' },
-  { value: 'gif', label: 'GIF' },
 ];
 
 const getGrid = (value) => {
@@ -38,12 +38,22 @@ const selectColor = (color) => {
   selectedColor.value = color;
 };
 
+const getCheckbox = (value) => {
+  checkboxChecked.value = value;
+};
+
 const handleUpdate = (newColor, index) => {
   if (colors.value[index] === selectedColor.value) {
     colors.value[index] = 'transparent'; // Deselect the box
   } else {
     colors.value[index] = selectedColor.value; // Select the box
   }
+
+  // If the Paint bucket is checked, color the surrounding boxes
+  if (checkboxChecked.value) {
+    colors.value = colorSurroundingBoxes(colors.value, index, selectedColor.value);
+  }
+
   usedColors.value = colors.value;
 };
 
