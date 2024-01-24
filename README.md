@@ -1,5 +1,7 @@
 # PixelArt - Nuxt 3
 
+demo: https://pixlerart.netlify.app/
+
 ## Implementation
 
 - I choosed Nuxt.js because it is a versatile framework, I like how it handles the routes and composable folder, that I didn't need for this project.
