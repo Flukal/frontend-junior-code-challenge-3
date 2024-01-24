@@ -1,6 +1,19 @@
-# Nuxt 3 Minimal Starter
+# PixelArt - Nuxt 3
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Implementation
+
+- I choosed Nuxt.js because it is a versatile framework, I like how it handles the routes and composable folder, that I didn't need for this project.
+- I feel me familiar with the conventions, like directory structure, automatic routing, use of composable folder. Even though I'm confident with my Nuxt.js skills, I'm committed to continuous learning and improvement.
+- I have been utilizing Nuxt.js for the past two years at my current company, where I have significantly enhanced my knowledge and proficiency in this technology.
+
+## Use of 3rd party libraries
+
+I used in this project three libraries html2canvas and jspdf to handle the creation and export of pdf or png file.
+
+Html2canvas builds a "screenshot" of the web page or part of it based on the Dom and the informations available on the page.
+Jspdf is used to create a PDF file, adding texts, images and other contents, giving the user the possibility to download the file.
+
+I used Tailwind CSS because it makes the styling of components way faster and consistence.
 
 ## Setup
 
@@ -12,12 +25,6 @@ npm install
 
 # pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -30,12 +37,6 @@ npm run dev
 
 # pnpm
 pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -48,12 +49,6 @@ npm run build
 
 # pnpm
 pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
@@ -64,12 +59,4 @@ npm run preview
 
 # pnpm
 pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

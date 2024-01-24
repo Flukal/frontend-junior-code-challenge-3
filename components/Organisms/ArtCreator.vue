@@ -57,6 +57,7 @@ const handleUpdate = (newColor, index) => {
   usedColors.value = colors.value;
 };
 
+// Get a list of unique, non-transparent colors
 const getUsedColors = () => {
   return [...new Set(colors.value.filter((color) => color !== 'transparent'))];
 };
